@@ -6,29 +6,26 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>스프링부트 게시판</title>
-	<link rel="stylesheet" type="text/css" href="css/board_deatil.css">
+	<link rel="stylesheet" type="text/css" href="/css/board_deatil.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<div th:replace="~{/common :: html-head}"></div>
 </head>
-<script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
 
-
-	var msg = "${msg}";
-
-	if (msg != "") {
-		alert(msg);
-	}
 
 	function deleteConfirm() {
+	
+		
 		if (!confirm("삭제 하시겠습니까?")) {
 			return false;
 		} else {
-			location.href = "${pageContext.request.contextPath}viewdelete?boardnum=${board.boardnum}";
+		location.href = "boarddelete?boardnum=[[${board.boardnum}]]";
 		}
 	}
-
+    /*]]>*/
 </script>
 
 <body>
@@ -44,24 +41,18 @@
 				</colgroup>
 				<tr class="article-title">
 					<th>제목:</th>
-					<td colspan="3">
-						${board.title}
-					</td>
+					<td colspan="3" th:text="${board.title}"></td>
 				</tr>
 				<tr class="article-info">
 					<th>작성자:</th>
-					<td>
-						${board.id}
-					</td>
+					<td th:text="${board.id}"></td>
 					<th style="width : 80px">날짜:</th>
-					<td style="width : 165px;">
-						${board.date}
-					</td>
+					<td style="width : 165px;" th:text="${board.date}"></td>
 				</tr>
 				<tr class="article-body">
 					<td colspan="4">
 						<div id="p_box">
-							<p style="white-space: pre-line;" class="p_box">${board.writes}</p>
+							<p style="white-space: pre-line;" class="p_box" th:text="${board.writes}"></p>
 						</div>
 					</td>
 				</tr>
@@ -70,16 +61,11 @@
 
 
 					<td colspan="3">
-						<c:if test="${pageContext.request.userPrincipal.name != null}">
-							첨부파일 다운: <a href="http://localhost:8080/download?filename=${board.files}">다운로드</a>
-						</c:if>
-						<c:if test="${pageContext.request.userPrincipal.name == null}">
-							로그인해야 첨부파일 다운로드 가능합니다.
-						</c:if>
+					<a th:href="@{http://localhost:8080/download(filename=${board.files})}">다운로드</a>
 					</td>
 
 					<td colspan="2">
-						<img src="/upload/${board.files}" width="100%" height="100%;">
+						<img th:src="@{/upload/{fileName}(fileName=${board.files})}" width="100%" height="100%">
 					</td>
 				</tr>
 
@@ -90,11 +76,10 @@
 	</section>
 
 	<div class="ass">
-		<input type="button" id="moc" value="목록" onclick="location.href= 'view'">
+		<input type="button" id="moc" value="목록" onclick="location.href= '/secjwt/board'">
 		<div class="box1">
 			<input type="button" id="de" onclick="deleteConfirm()" value="삭제">
-			<input type="button" id="up" value="수정" onclick="location.href= 'viewupdate?boardnum=${board.boardnum}'">
-
+			<input type="button" id="up" value="수정" th:onclick="|location.href='@{/secjwt/boardupdate(boardnum=${board.boardnum})}'|">
 		</div>
 	</div>
 

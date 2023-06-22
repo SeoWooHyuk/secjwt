@@ -63,7 +63,7 @@
 				html += '<tr>';
 				html += '    <td></td>';
 				html += '    <td>'+i+'</td>';
-				html += '    <td> <a href="viewdetail?boardnum='+data.boardMap.boardList[i].boardnum+'">' +data.boardMap.boardList[i].title+ '<a>  </td>';
+				html += '    <td> <a href="boarddetail?boardnum='+data.boardMap.boardList[i].boardnum+'">' +data.boardMap.boardList[i].title+ '<a>  </td>';
 				html += '    <td>'+data.boardMap.boardList[i].id+'</td>';
 				html += '    <td>'+data.boardMap.boardList[i].date+'</td>';
 				html += '</tr>';

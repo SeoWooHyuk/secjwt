@@ -22,6 +22,6 @@ public interface BoardDao {
 
     public Integer boarddetaildelete(int boardnum);
 
-    public Integer boardupdateok(BoardVo updatevo);
+    public Integer boardupdate(BoardVo updatevo);
 
 }

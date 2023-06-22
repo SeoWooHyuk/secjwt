@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 insert into  boards(boardnum,id,writes,title,files) values(#{boardnum},#{id},#{writes},#{title},#{files})
         </insert>
 
-        <update  id="boardupdateok">
+        <update  id="boardupdate">
                 update boards set title=#{title} , writes=#{writes}  where boardnum=#{boardnum};
         </update >
 

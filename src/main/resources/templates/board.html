@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,41 +8,13 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	<link href="css/sb-admin-2.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/board_select.css">
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="/js/board.js" type="text/javascript"></script>
-
 	<div th:replace="~{/common :: html-head}"></div>
-
 </head>
 
 <body>
-
-	<!-- ajax 게시판 호출 -->
-	<script type="text/javascript"></script>
-	<style type="text/css">
-		* {
-			font-family: 'Noto Sans KR', sans-serif;
-		}
-
-		#submi {
-
-			height: 35px;
-			width: 100px;
-		}
-
-		#submi:hover {
-			border-style: solid;
-			border-color: blueviolet;
-		}
-	</style>
-
-	<!-- 총게시물 ${totCnt} / 페이지 (${searchVO.pageIndex} / ${totalPageCnt}) -->
-
-	<sec:authorize access="permitAll">
-		<div th:replace="~{/common :: header}"></div>
-	</sec:authorize>
-
+<div th:replace="~{/common :: header}"></div>
 <section class="board">
 	<h2 style="text-align: center; font-size: 30px; margin-bottom: 20px; margin-top: 30px;">스프링부트 타임리프트 게시판 </h2>
 
@@ -54,7 +25,7 @@
 		<div id="box" style="flex-basis: 675px; height: 73px; float: right;  ">
 			<div action="board_select" class="search_form" style="float :left;">
 				<input class="searchTerm" placeholder="검색하세여" name="searchKeyword"
-					value="${searchVO.searchKeyword}" /><input class="searchButton" onclick="fn_search();" />
+					value="" /><input class="searchButton" onclick="fn_search();" />
 			</div>
 		</div>
 	</form>
@@ -81,7 +52,7 @@
 </section>
 
 <section class="board2">
-	<input type="button" id="submi" value="+등록하기" onclick="location.href= 'viewinsert'" ;>
+	<input type="button" id="submi" value="+등록하기" onclick="location.href= '/secjwt/boardinsert'" ;>
 </section>
 
 <!-- Paging[s] -->

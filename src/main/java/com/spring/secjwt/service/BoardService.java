@@ -60,9 +60,10 @@ public class BoardService {
         return intI;
     }
 
-    public Integer boardupdateok(BoardVo updatevo)
+    public Integer boardupdate(BoardVo updatevo)
     {
-        Integer intI = bd.boardupdateok(updatevo);
+        System.out.println("확인");
+        Integer intI = bd.boardupdate(updatevo);
         return intI;
     }
     

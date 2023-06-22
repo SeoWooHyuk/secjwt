@@ -1,3 +1,6 @@
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 body{
 	margin : 0;
 	font-family: 'Noto Sans KR', sans-serif;
@@ -35,6 +38,8 @@ body{
     float:right;
     border-radius:3px;
     line-height: 5px;
+    height: 35px;
+    width: 100px;
     
 }
 #submi:hover{ background-color:#A566FF;	}
@@ -48,7 +53,7 @@ list-style: none;
 
 .tbl_type,.tbl_type th,.tbl_type td{border:0;}
 .tbl_type a{color:#383838;text-decoration:none}
-.tbl_type{width:100%;border-bottom:1px solid #999;color:#666;font-size:12px;table-layout:fixed; margin-top: 82px}
+.tbl_type{width:100%; border-bottom:1px solid #999;color:#666;font-size:12px;table-layout:fixed; margin-top: 82px}
 .tbl_type caption,.tbl_type .frm label{display:none}
 .tbl_type th{ 
 	 font-size: 20px;
