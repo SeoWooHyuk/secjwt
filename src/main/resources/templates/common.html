@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html-head">
+<meta charset="UTF-8">
+<title>헤더</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</head>
+<body>
+			
+	<div th:fragment="header">
+	<div class="b-example-divider"></div>
+
+	<div class="container">
+	  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+		<a href="#" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+		  <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+		</a>
+  
+		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+			<li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+			<li><a href="/secjwt/board" class="nav-link px-2 link-dark">게시판</a></li>
+			<li><a href="/admin" class="nav-link px-2 link-dark">관리자 페이지</a></li>
+			<li><a href="/chat/rooms" class="nav-link px-2 link-dark">스톰브 채팅방 리스트</a></li>
+		</ul>
+  
+		<div class="col-md-3 text-end">
+			<button type="button" class="btn btn-outline-primary me-2" onclick="location.href= '/logout'">logout</button>
+			<button type="button" class="btn btn-outline-primary me-2" onclick="location.href= '/secjwt/login'">Login</button>
+			<button type="button" class="btn btn-primary" onclick="location.href= '/join'">Sign-up</button>
+		</div>
+
+	  </header>
+	</div>
+	</div>
+
+
+	<footer th:fragment="footer">
+		<div id=foot>	
+			<div class="footer2">
+				<div class="footer2_sec">
+					<p style="text-align: center; font-size: 8pt; font-weight:bold">
+						(주)포폴 | 경기도 광주시 태전동 000, 0층 대표 서우혁 | 개인정보관리책임자 : 서우혁 | 사업자등록번호 : 000-00-00000 <br>
+						통신판매업신고 : 2023-경기광주-0000 | 유료직업소개사업등록번호 : 제2023-0000000-00-0-00000호 | 고객센터 : 0000-0000 | tjdngur123@naver.com
+					</p>
+					<p style="text-align: center; font-size: 8pt; margin-top: 20px; color:gray;">(주)포폴은 개인공부용이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매회원에게 있습니다.<br>
+					(주)포폴 사이트의 상품/판매회원/중개 서비스/거래 정보, 콘텐츠, UI 등에 대한 무단복제, 전송, 배포, 스크래핑 등의 행위는 저작권법, 콘텐츠산업 진흥법 등 관련법령에 의하여 엄격히 금지됩니다. [안내 보기]</p>
+
+					<p style="text-align: center; font-size: 8pt; margin-top: 20px; color:gray;">Copyright © 2023 포폴 Inc. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
+	
+</body>
+
+</html>
+
+
+
+

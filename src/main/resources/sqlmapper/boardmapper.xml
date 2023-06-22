@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.secjwt.dao.BoardDao"> 
+	
+        <select id="boardsallselect" resultType="com.spring.secjwt.vo.BoardVo">
+                select boardnum,id,title,writes,date
+                from boards 
+               <where>
+                <if test="searchKeyword != null and searchKeyword != ''">
+                title LIKE CONCAT('%', #{searchKeyword}, '%')
+                </if>
+                </where>
+                ORDER BY boardnum DESC
+                LIMIT #{recordCountPerPage} OFFSET #{firstIndex} 
+        </select>
+
+         <select id="boardsallselectlistcount" resultType="java.lang.Integer" parameterType="com.spring.secjwt.vo.BoardVo">
+                select count(*)
+                from boards 
+               <where>
+                <if test="searchKeyword != null and searchKeyword != ''">
+                title LIKE CONCAT('%', #{searchKeyword}, '%')
+                </if>
+                </where>
+        </select>
+
+        <select id="getListcount" parameterType="com.spring.secjwt.vo.BoardVo" resultType="java.lang.Integer">
+                select count(*)
+                from boards 
+               
+        </select>
+
+         <select id="getListmax"  parameterType ="Integer">
+                select max(boardnum) as boardnum
+                from boards 
+               
+        </select>
+
+         <delete id="boarddetaildelete">
+                DELETE FROM boards WHERE boardnum=#{boardnum}
+        </delete>
+
+         <select id="boarddetail" parameterType ="Integer">
+                select * from boards where boardnum= #{boardnum}
+        </select>
+
+        <insert id="boardinsert">
+                insert into  boards(boardnum,id,writes,title,files) values(#{boardnum},#{id},#{writes},#{title},#{files})
+        </insert>
+
+        <update  id="boardupdateok">
+                update boards set title=#{title} , writes=#{writes}  where boardnum=#{boardnum};
+        </update >
+
+
+</mapper>
