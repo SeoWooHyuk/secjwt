@@ -58,10 +58,12 @@ public class BoardService {
     }
 
 
-    public BoardVo boarddetail(int boardnum)
+    public Map<String, BoardVo> boarddetail(int boardnum)
     {
         BoardVo board = bd.boarddetail(boardnum);
-        return board;
+        Map<String, BoardVo> boardMap = new HashMap<>();
+        boardMap.put("board", board);
+        return boardMap;
     }
 
     public Integer boardinsert(BoardVo searchVO)

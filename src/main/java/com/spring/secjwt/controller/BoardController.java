@@ -28,6 +28,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 
 
@@ -58,6 +60,7 @@ public class BoardController {
 
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> boardMap =  boardService.boardsallselectajax(searchVO); //테이블셀렉
+        System.out.println(boardMap);
 		mv.addObject("boardMap", boardMap);  //테이블 게시글 셀렉에 이용
 		mv.setViewName("jsonView"); //클라이언트로
 		return mv;
@@ -68,13 +71,9 @@ public class BoardController {
     @ApiResponse(responseCode = "404", description = "존재하지 않는 리소스 접근", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
     @GetMapping(value ="/board/{boardnum}")  //게시글 디테일 창
-    public ModelAndView boarddetail(@RequestParam Integer boardnum, Model model) throws Exception
+    public Map<String, BoardVo> boarddetail(@RequestParam Integer boardnum) throws Exception
     {
-        ModelAndView mv = new ModelAndView();
-        BoardVo board =  boardService.boarddetail(boardnum);
-        model.addAttribute("board", board);
-        mv.setViewName("boarddetail");
-        return mv; 
+       	return boardService.boarddetail(boardnum);
     }
 
     @GetMapping("/write")  //게시글 인설트 페이지
@@ -107,15 +106,15 @@ public class BoardController {
 
    
 
-    @GetMapping("/update")  //게시글 update 창
-    public ModelAndView boardupdate(@RequestParam Integer boardnum, Model model)throws Exception
-    {
-        ModelAndView mv = new ModelAndView();
-        BoardVo board =  boardService.boarddetail(boardnum);
-        model.addAttribute("board", board);
-        mv.setViewName("boardupdate");
-        return mv; 
-    }
+    // @GetMapping("/update")  //게시글 update 창
+    // public ModelAndView boardupdate(@RequestParam Integer boardnum, Model model)throws Exception
+    // {
+    //     ModelAndView mv = new ModelAndView();
+    //     BoardVo board =  boardService.boarddetail(boardnum);
+    //     model.addAttribute("board", board);
+    //     mv.setViewName("boardupdate");
+    //     return mv; 
+    // }
 
     @PutMapping("/update")  //게시글 update alter 창
     public ModelAndView boardupdateok(@ModelAttribute BoardVo updatevo)throws Exception
