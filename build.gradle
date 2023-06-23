@@ -3,6 +3,7 @@ plugins {
 	id 'war'
 	id 'org.springframework.boot' version '3.1.0'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
 }
 
 group = 'com.spring'
@@ -36,6 +37,8 @@ dependencies {
 
 	implementation group: 'commons-io', name: 'commons-io', version: '2.12.0'
 	implementation group: 'org.json', name: 'json', version: '20230227'
+
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 }
 
 tasks.named('test') {
